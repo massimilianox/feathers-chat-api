@@ -7,10 +7,15 @@ module.exports = function (options = {}) {
 
     const { app, method, result, params } = context
 
-    const messages = method === 'find' ? result.data : [result]
+    console.log('___params: ', params)
+    console.log('___method: ', method)
+    console.log('___result: ', result)
+    
+    const messages = method === 'find' ? result.data : [ result ]
 
     await Promise.all(messages.map(async message => {
       message.user = await app.service('users').get(message.userId, params)
+      console.log('message id:', message._id)
     }))
 
     return context;

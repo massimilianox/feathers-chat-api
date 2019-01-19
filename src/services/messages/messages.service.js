@@ -6,7 +6,10 @@ const hooks = require('./messages.hooks');
 const createModel = require('../../models/message.model')
 
 module.exports = function (app) {
+
+  // set a default number of result
   const paginate = app.get('paginate');
+  
   // const mongoClient = app.get('mongoClient');
 
   const Model = createModel(app)
@@ -14,6 +17,8 @@ module.exports = function (app) {
   const options = { 
     Model,
     paginate };
+
+  console.log('paginate: ', paginate)
 
   // Initialize our service with any options it requires
   app.use('/messages', createService(options));

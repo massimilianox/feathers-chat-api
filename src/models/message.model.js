@@ -1,7 +1,5 @@
-
 module.exports = function(app) {
   const mongooseClient = app.get('mongooseClient')
-
   const { Schema, ObjectId } = mongooseClient
   const message = new Schema({
     text: { 
